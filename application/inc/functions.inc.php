@@ -9,31 +9,28 @@ defined('MY_APP') or die('Restricted access');
 
 function validateproduct($product) {
 	
-	
+
 	return false;
 	
 	
 }
 
-function saveProduct($item ) {
+function saveProduct($product) {
 	
-	$sqlQuery = "INSERT INTO prod uctts (title, mf_id,	price,
-	taste)
-	values ('{$product['title']}','{$product['mf_id']}', '{$product['priice']}','{$product['taset']}')";
+	$sqlQuery = "INSERT INTO products (title, mf_id, price, taste) values ('{$product['title']}','{$product['mf_id']}', '{$product['price']}','{$product['taste']}')";
 	
-	//$result = mysql_query($sqlQuery);
+	$result = mysql_query($sqlQuery);
 	
 	
 
 	
 	if (!$result) {
+                console.log( "bbbbdddd");
 		echo $sqlQuery;
-		
-		die("error" . mysql_error());
-	} 
-	
-	
-	return mysql_insert_id();
+	}  
+        
+    return mysql_insert_id();
+
 	
 }
 /* 
@@ -107,7 +104,7 @@ function updateMovie($product) {
 
 function deleteMovie($id) {
     $productID = (int) $id;
-    $sqlQuery = "DELETE FROM  where product_id = $productID";
+    $sqlQuery = "DELETE FROM products where product_id = $productID";
     
     $result = mysql_query($sqlQuery);
     if (!$result) {

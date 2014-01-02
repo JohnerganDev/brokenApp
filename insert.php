@@ -24,8 +24,7 @@ include (APPLICATION_PATH . "/inc/ui_helpers.inc.php");
 $product = array();
 $product['title'] = "";
 $product['description'] = "";
-$product['pre'] ="";
-$product['taste'] ="G";
+$product['taste'] ="";
 $product['mf_id'] =0;
 $product['movie_id']=0;
 
@@ -33,28 +32,29 @@ $product['movie_id']=0;
 
 if (!empty($_POST)) {
 	
-	
+
 	$product = array();
 	$product['title'] = htmlspecialchars(strip_tags($_POST["title"]));
 	$product['description'] = htmlspecialchars(strip_tags($_POST["description"]));
 	$product['price'] = htmlspecialchars(strip_tags($_POST[""]));
-	$product['taste'] = htmlspecialchars(strip_tags($_POST["tas"]));
+	$product['taste'] = htmlspecialchars(strip_tags($_POST["taste"]));
 	$product['mf_id'] = (int) htmlspecialchars(strip_tags($_POST["mf_id"]));
         
-        
+	
         $product['product_id'] = isset($_POST["product_id"]) ? (int) $_POST["product_id"] : 0;
         
 	$flashMessage = "";
 	if (validateProduct($product)) {
+                
 		if ($product['product_id'] == 0) {
          //New! Save Movie returns the id of the record inserted         
 		$product_id = saveproduct($product);
 	//	uploadFiles($product_id);
-		
+		saveProduct($product);
 		
 		$flashMessage = "Record has been saved";
                 } else {
-                    
+                            echo "$product";
                     updateMovie($product);
 		
                         header("Location: admin.php");
