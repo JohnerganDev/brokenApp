@@ -9,7 +9,7 @@
 <?php endif;  ?>
 <form class="form-horizontal" method="post" action="insert.php" enctype="multipart/form-data" >
 	
-    <input type="hidden" name="product_id"
+    <input type="hidden" name="product_id" placeholder="Description"
 		value="<?php echo $product['product_id']; ?>" />
 	<div class="control-group">
 		<label class="control-label" for="inputproductTitle">Product</label>
@@ -23,10 +23,9 @@
 	<div class="control-group">
 		<label class="control-label" for="inputproductTitle">Description</label>
 		<div class="controls">
-			<textarea name="description">
-  <?php echo $product['description']; ?>
-  
-  </textarea>
+
+			<textarea name="description" type="text" id="inputproductDescription" name="Description"
+				placeholder="Description" value="<?php echo $product['description']; ?>"></textarea>
 		</div>
 	</div>
 
@@ -36,9 +35,10 @@
 		<div class="controls">
 			<input type="text" id="inputPrice" name="price"
 				placeholder="Price"
-				value="<?php echo $product['price']; ?>">
+				value="<?php echo $product['price']; ?>"
 		</div>
 	</div>
+    </div>
 
 
 	<div class="control-group">
@@ -74,6 +74,19 @@ echo uihelperSelect('mf_id',$arrayItems,$product['mf_id']) ?>
 				<option value="Sweet"<?php echo output_selected($product['taste'],'Sweet') ?>>Sweet</option>
 				<option value="Savoury"<?php echo output_selected($product['taste'],'Savoury') ?>>Savoury</option>
 				<option value="Sour"<?php echo output_selected($product['taste'],'Sour') ?>>Sour</option>
+			
+
+			</select>
+		</div>
+	</div>
+    
+    	<div class="control-group">
+		<label class="control-label" for="inputproductTitle">Country</label>
+		<div class="controls">
+			<select id="country" name="country">
+				<option value="Ireland"<?php echo output_selected($product['taste'],'Ireland') ?>>Ireland</option>
+				<option value="UK"<?php echo output_selected($product['taste'],'UK') ?>>UK</option>
+				<option value="France"<?php echo output_selected($product['taste'],'France') ?>>France</option>
 			
 
 			</select>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start(); do not need
 
 /*
  * Set up constant to ensure include files cannot be called on their own
@@ -11,7 +11,7 @@ define ( "MY_APP", 1 );
 define ( "APPLICATION_PATH", "application" );
 define ( "TEMPLATE_PATH", APPLICATION_PATH . "/view" );
 
-include_once(APPLICATION_PATH . "/inc/session.inc.php");
+// include_once(APPLICATION_PATH . "/inc/session.inc.php");
 
 
 /*
@@ -52,6 +52,7 @@ if ($result) {
 	$htmlString .= "<th>Confectionary Item</th>";
 	$htmlString .= "<th>Price</th>";
 	$htmlString .= "<th>Taste</th>";
+        $htmlString .= "<th>Country</th>";
 	$htmlString .= "<th colspan='2'>Actions</th>";
 
 	$htmlString .= "</tr>";
@@ -71,6 +72,10 @@ if ($result) {
 		$htmlString .=  "<td>";
 		$htmlString .=  $product["taste"];
 		$htmlString .=  "</td>";
+                $htmlString .=  "<td>";
+		$htmlString .=  $product["country"];
+		$htmlString .=  "</td>";
+                
 		
 		
 		$htmlString .=  "<td>";

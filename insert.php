@@ -25,6 +25,8 @@ $product = array();
 $product['title'] = "";
 $product['description'] = "";
 $product['taste'] ="";
+
+$product['country'] = "";
 $product['mf_id'] =0;
 $product['movie_id']=0;
 
@@ -36,8 +38,9 @@ if (!empty($_POST)) {
 	$product = array();
 	$product['title'] = htmlspecialchars(strip_tags($_POST["title"]));
 	$product['description'] = htmlspecialchars(strip_tags($_POST["description"]));
-	$product['price'] = htmlspecialchars(strip_tags($_POST[""]));
+	$product['price'] = htmlspecialchars(strip_tags($_POST["price"]));
 	$product['taste'] = htmlspecialchars(strip_tags($_POST["taste"]));
+        $product['country'] = htmlspecialchars(strip_tags($_POST["country"]));
 	$product['mf_id'] = (int) htmlspecialchars(strip_tags($_POST["mf_id"]));
         
 	

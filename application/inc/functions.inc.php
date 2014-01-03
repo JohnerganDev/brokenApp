@@ -10,14 +10,14 @@ defined('MY_APP') or die('Restricted access');
 function validateproduct($product) {
 	
 
-	return false;
+	return true;
 	
 	
 }
 
 function saveProduct($product) {
 	
-	$sqlQuery = "INSERT INTO products (title, mf_id, price, taste) values ('{$product['title']}','{$product['mf_id']}', '{$product['price']}','{$product['taste']}')";
+	$sqlQuery = "INSERT INTO products (title, mf_id, price, taste, country) values ('{$product['title']}','{$product['mf_id']}', '{$product['price']}','{$product['taste']}','{$product['country']}')";
 	
 	$result = mysql_query($sqlQuery);
 	
@@ -25,7 +25,7 @@ function saveProduct($product) {
 
 	
 	if (!$result) {
-                console.log( "bbbbdddd");
+
 		echo $sqlQuery;
 	}  
         
@@ -134,13 +134,13 @@ function retrieveMovie($id) {
 
 function output_edit_link($id) {
 	
-	return "<a href='ed.php?id=$id'>Edit</a>";
+	return "<a href='edit.php?id=$id'>Edit</a>";
 	
 	
 }
 function output_delete_link($id) {
 
-	return "<a href='del.php?id=$id'>Delete</a>";
+	return "<a href='delete.php?id=$id'>Delete</a>";
 
 
 }
