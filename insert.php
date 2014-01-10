@@ -25,7 +25,7 @@ $product = array();
 $product['title'] = "";
 $product['description'] = "";
 $product['taste'] ="";
-
+$product['price'] ="";
 $product['country'] = "";
 $product['mf_id'] =0;
 $product['movie_id']=0;

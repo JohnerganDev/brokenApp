@@ -33,6 +33,25 @@ function saveProduct($product) {
 
 	
 }
+
+function updateMf($mfs) {
+	
+	$sqlQuery = "INSERT INTO product (mf_title) values ('{$product['mf_mf_title']}')";
+	
+	$result = mysql_query($sqlQuery);
+	
+	
+
+	
+	if (!$result) {
+
+		echo $sqlQuery;
+	}  
+        
+    return mysql_insert_id();
+
+	
+}
 /* 
  * Realistically, you would pass function $_FILES array, but here we are assuming it's available
  * UPLOAD_PATH is defined in config.inc.php
@@ -79,7 +98,7 @@ function saveImageRecord($product_id, $imageName) {
 function updateMovie($product) {
     $productID = (int) $product['movie_id'];
     $sqlQuery = "UPDATE products SET ";
-     $sqlQuery .= " taste = '" . $produc['taste'] . "',";
+     $sqlQuery .= " taste = '" . $product['taste'] . "',";
      $sqlQuery .= " price = '". $product['price'] . "',";
      $sqlQuery = " title = '". $product['ttle'] . "',";
      $sqlQuery = " description = '". $product['description'] . "', ";
@@ -113,9 +132,20 @@ function deleteMovie($id) {
 }
 
 
+function deleteMF($id) {
+    $MFid = (int) $id;
+    $sqlQuery = "DELETE FROM mfs where mf_id = $MFid";
+    
+    $result = mysql_query($sqlQuery);
+    if (!$result) {
+		die("error" . mysql_error());
+        }
+}
+
+
 function retrieveMovie($id) {
 
-	$sqlQuery = "SELECT * from  WHERE product_id = $id";
+	$sqlQuery = "SELECT * from products  WHERE product_id = $id";
 
 	$result = mysql_query($sqlQuery);
 	
@@ -143,6 +173,20 @@ function output_delete_link($id) {
 	return "<a href='delete.php?id=$id'>Delete</a>";
 
 
+}
+
+function mf_edit_link($id) {
+	
+	return "<a href='editMF.php?id=$id'>Edit</a>";
+	
+	
+}
+
+function mf_delete_link($id) {
+	
+	return "<a href='deleteMF.php?id=$id'>Delete</a>";
+	
+	
 }
 
 function output_selected($currentValue, $valueToMatch) {
