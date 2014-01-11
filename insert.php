@@ -38,8 +38,9 @@ if (!empty($_POST)) {
 	$product = array();
 	$product['title'] = htmlspecialchars(strip_tags($_POST["title"]));
 	$product['description'] = htmlspecialchars(strip_tags($_POST["description"]));
+        $product['taste'] = htmlspecialchars(strip_tags($_POST["taste"]));
 	$product['price'] = htmlspecialchars(strip_tags($_POST["price"]));
-	$product['taste'] = htmlspecialchars(strip_tags($_POST["taste"]));
+
         $product['country'] = htmlspecialchars(strip_tags($_POST["country"]));
 	$product['mf_id'] = (int) htmlspecialchars(strip_tags($_POST["mf_id"]));
         
@@ -52,7 +53,7 @@ if (!empty($_POST)) {
 		if ($product['product_id'] == 0) {
          //New! Save Movie returns the id of the record inserted         
 		$product_id = saveproduct($product);
-	//	uploadFiles($product_id);
+		uploadFiles($product_id);
 		saveProduct($product);
 		
 		$flashMessage = "Record has been saved";
@@ -78,6 +79,6 @@ if (!empty($_POST)) {
 $activeInsert = "active";
 $buttonLabel = "Insert Movie Record";
 include (TEMPLATE_PATH . "/header.html");
-include (TEMPLATE_PATH . "/form_insert.html");
+include (TEMPLATE_PATH . "/form_insert.php");
 include (TEMPLATE_PATH . "/footer.html");
 ?>

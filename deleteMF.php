@@ -27,4 +27,4 @@ if (!empty($_GET) && isset($_GET['id'])) {
     deleteMF($mfID);
    
 }
- header("Location: admin.php");
+ header("Location: MF.php");

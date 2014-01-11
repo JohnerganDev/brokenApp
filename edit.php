@@ -22,25 +22,39 @@ include (APPLICATION_PATH . "/inc/db.inc.php");
 include (APPLICATION_PATH . "/inc/ui_helpers.inc.php");
 include (APPLICATION_PATH . "/inc/functions.inc.php");
 include (APPLICATION_PATH . "/inc/queries.inc.php");
-$product = array();
-$product['title'] = "";
-$product['description'] = "";
-$product['taste'] ="";
-$product['price'] ="";
-$product['country'] = "";
-$product['mf_id'] =0;
-$product['movie_id']=0;
+
+
+
+
+
 
 if (!empty($_GET) && isset($_GET['id'])) {
 	
 	//echo "Page is posted";
+
+
+	
+  
 	
 	$movieID = (int) $_GET['id'];
-        //echo $movieID;
-	//$movie = retrieveMovie($movieID);
-        //updateMovie(movie_id);
-	
-	$buttonLabel = "Update Movie";
+
+	$movie = retrieveMovie($movieID);
+
+        
+        $product = array();
+        $product['title'] = $movie['title'];
+        $product['description'] = $movie['description'];
+        $product['taste'] = $movie['taste'];
+        $product['price'] = $movie['price'];
+        $product['country'] = $movie['country'];
+        $product['mf_id'] = $movie['mf_id'];
+        $product['movie_id']= $movieID;
+
+            
+        print_r($movie['mf_id']);
+        
+        updateMovie($product);
+	$button_label = "Update Movie";
 	
 	
 	}//end post
@@ -51,6 +65,6 @@ if (!empty($_GET) && isset($_GET['id'])) {
 $activeInsert = "active";
 
 include (TEMPLATE_PATH . "/header.html");
-include (TEMPLATE_PATH . "/form_edit.html");
+include (TEMPLATE_PATH . "/form_edit.php");
 include (TEMPLATE_PATH . "/footer.html");
 ?>

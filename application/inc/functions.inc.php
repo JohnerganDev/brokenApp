@@ -34,9 +34,9 @@ function saveProduct($product) {
 	
 }
 
-function updateMf($mfs) {
+function updateMf($mf) {
 	
-	$sqlQuery = "INSERT INTO product (mf_title) values ('{$product['mf_mf_title']}')";
+        $sqlQuery = "INSERT INTO mfs (mf_id, mf_title) values ('{$mf['mf_id']}','{$mf['mf_title']}')";
 	
 	$result = mysql_query($sqlQuery);
 	
@@ -97,14 +97,16 @@ function saveImageRecord($product_id, $imageName) {
 
 function updateMovie($product) {
     $productID = (int) $product['movie_id'];
+    echo $productID;
     $sqlQuery = "UPDATE products SET ";
      $sqlQuery .= " taste = '" . $product['taste'] . "',";
+     $sqlQuery .= " country = '" . $product['country'] . "',";
      $sqlQuery .= " price = '". $product['price'] . "',";
-     $sqlQuery = " title = '". $product['ttle'] . "',";
-     $sqlQuery = " description = '". $product['description'] . "', ";
+     $sqlQuery .= " title = '". $product['title'] . "',";
+     $sqlQuery .= " description = '". $product['description'] . "', ";
      $sqlQuery .= " mf_id = '". $product['mf_id'] . "'";
     
-    $sqlQuery .= " WHERE productid = $productID";
+    $sqlQuery .= " WHERE product_id = $productID";
     
   //  echo $sqlQuery;
  //  die("...");
@@ -152,10 +154,12 @@ function retrieveMovie($id) {
 	if(!$result) die("error" . mysql_error());
 	
 	
-	//echo $sqlQuery;
 
 
-	return mysql_fetch_assoc($result);
+        $output = mysql_fetch_assoc($result);
+
+
+	return $output;
 	
 }
 
